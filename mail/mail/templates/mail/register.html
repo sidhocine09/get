@@ -1,0 +1,31 @@
+{% extends "mail/layout.html" %}
+
+{% block body %}
+
+   <body style="background-color: aquamarine;">
+       
+  
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+<div style="width: 400px; height: 300px;position: relative;background-color: aquamarine;left: 35%;margin-top: 8%;"> 
+    <h2 style="text-align: center; margin-top: 30px;" >Register</h2>
+    <form  action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+</div>
+</body>
+
+{% endblock %}
